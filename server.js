@@ -3,12 +3,15 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const request = require("request");
 const scheduleItem = require("node-cron");
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb' }));
+
 
 // build mongodb connection
 // const uri = "mongodb+srv://<yourid>:<yourpw>@nodeexpress-jwt-test.p1g9w.mongodb.net/todoApp?retryWrites=true&w=majority";
@@ -18,6 +21,7 @@ const uri = "mongodb+srv://" + username + ":" + password + "@cluster0.hdtn4.mong
 
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
+
 connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });
@@ -48,6 +52,7 @@ app.listen(port, () => {
 });
 
 //wake up code
+// const apiurl = "http://192.168.31.18:5000/";
 const apiurl = "https://sharewardrobe-api-server.herokuapp.com/";
 var task = scheduleItem.schedule('10 * * * * *', () => {
     console.log(apiurl + ' try');

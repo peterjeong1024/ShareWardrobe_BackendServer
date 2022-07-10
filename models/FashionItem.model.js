@@ -7,11 +7,11 @@ const FashionItemSchema = new Schema({
     ItemDesc: { type: String, required: true, default: "None" },
     ItemColor: { type: String, required: true, default: "Blue" },
     ItemFabric: { type: String, required: true, default: "Cotton" },
-    ItemPrice: { type: Number, required: true, default: "0.00" },
+    ItemPrice: { type: Number, required: true, default: 0.00 },
     ItemSize: { type: String, required: true, default: "M" },
     ItemSeason: { type: String, required: true, default: "Seasonal" },
     ItemBrand: { type: String, required: true, default: "Nike" },
-    ItemImg: { type: String, required: false },
+    ItemImg: { type: Buffer, required: false, contentsType: String, default: "" },
     ItemLocation: { type: String, required: true, default: "Address" },
 });
 
