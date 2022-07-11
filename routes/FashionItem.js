@@ -4,10 +4,7 @@ let Todo = require("../models/FashionItem.model");
 // Read all
 router.route("/").get((req, res) => {
     Todo.find()
-        .then((todos) => {
-            console.log(todos[0].ItemImg.buffer);
-            res.json(todos);
-        })
+        .then((todos) => res.json(todos))
         .catch((err) => res.status(400).json("Error: " + err));
 });
 
