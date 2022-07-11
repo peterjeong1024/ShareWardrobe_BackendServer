@@ -13,7 +13,7 @@ const FashionItemSchema = new Schema({
     ItemSize: { type: String, default: "M" },
     ItemSeason: { type: String, default: "None" },
     ItemBrand: { type: String, default: "None" },
-    ItemImg: { type: Buffer, contentsType: String, default: "" },
+    ItemImg: { type: String, default: "" },
     ItemLocation: { type: String, required: true, default: "None" },
     ItemBuyDate: { type: Date, default: '2022-01-01' },
     ItemWornCount: { type: Number, default: 0 },
