@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const UserPlanDataSchema = new Schema({
     UserID: { type: String, required: true, default: "" },
-    FItemsSerialize: { type: String, required: true, default: "" },
+    WornDate: { type: Date, required: true, default: '2022-01-01' },
     OutFitsSerialize: { type: String, required: true, default: "" },
 });
 

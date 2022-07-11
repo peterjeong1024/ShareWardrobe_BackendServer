@@ -11,6 +11,8 @@ router.route("/").get((req, res) => {
 // Create
 router.route("/add").post((req, res) => {
     const ItemName = req.body.ItemName;
+    const ItemOwner = req.body.ItemOwner;
+    const ItemCategory = req.body.ItemCategory;
     const ItemDesc = req.body.ItemDesc;
     const ItemColor = req.body.ItemColor;
     const ItemFabric = req.body.ItemFabric;
@@ -20,9 +22,13 @@ router.route("/add").post((req, res) => {
     const ItemBrand = req.body.ItemBrand;
     const ItemImg = req.body.ItemImg;
     const ItemLocation = req.body.ItemLocation;
+    const ItemBuyDate = req.body.ItemBuyDate;
+    const ItemWornCount = req.body.ItemWornCount;
 
     const newTodo = new Todo({
         ItemName,
+        ItemOwner,
+        ItemCategory,
         ItemDesc,
         ItemColor,
         ItemFabric,
@@ -32,6 +38,8 @@ router.route("/add").post((req, res) => {
         ItemBrand,
         ItemImg,
         ItemLocation,
+        ItemBuyDate,
+        ItemWornCount,
     });
 
     newTodo

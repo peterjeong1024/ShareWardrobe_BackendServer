@@ -4,15 +4,19 @@ const Schema = mongoose.Schema;
 
 const FashionItemSchema = new Schema({
     ItemName: { type: String, required: true, default: "" },
-    ItemDesc: { type: String, required: true, default: "None" },
-    ItemColor: { type: String, required: true, default: "Blue" },
-    ItemFabric: { type: String, required: true, default: "Cotton" },
+    ItemOwner: { type: String, required: true, default: "" },
+    ItemCategory: { type: String, default: "Other" },
+    ItemDesc: { type: String, default: "None" },
+    ItemColor: { type: String, default: "White" },
+    ItemFabric: { type: String, default: "None" },
     ItemPrice: { type: Number, required: true, default: 0.00 },
-    ItemSize: { type: String, required: true, default: "M" },
-    ItemSeason: { type: String, required: true, default: "Seasonal" },
-    ItemBrand: { type: String, required: true, default: "Nike" },
-    ItemImg: { type: Buffer, required: false, contentsType: String, default: "" },
-    ItemLocation: { type: String, required: true, default: "Address" },
+    ItemSize: { type: String, default: "M" },
+    ItemSeason: { type: String, default: "None" },
+    ItemBrand: { type: String, default: "None" },
+    ItemImg: { type: Buffer, contentsType: String, default: "" },
+    ItemLocation: { type: String, required: true, default: "None" },
+    ItemBuyDate: { type: Date, default: '2022-01-01' },
+    ItemWornCount: { type: Number, default: 0 },
 });
 
 const FashionItem = mongoose.model("FashionItem", FashionItemSchema);

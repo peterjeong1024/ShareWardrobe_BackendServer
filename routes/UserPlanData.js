@@ -11,12 +11,12 @@ router.route("/").get((req, res) => {
 // Create
 router.route("/add").post((req, res) => {
     const UserID = req.body.UserID;
-    const FItemsSerialize = req.body.FItemsSerialize;
+    const WornDate = req.body.WornDate;
     const OutFitsSerialize = req.body.OutFitsSerialize;
 
     const newTodo = new Todo({
         UserID,
-        FItemsSerialize,
+        WornDate,
         OutFitsSerialize,
     });
 
