@@ -27,22 +27,36 @@ router.route("/add").post((req, res) => {
 });
 
 // Read one
-router.route("/:id").get((req, res) => {
-    Todo.findById(req.params.id)
+router.route("/:UserID").get((req, res) => {
+    Todo.findOne({ UserID: req.params.UserID })
+        .then((todo) => res.json(todo))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// Check id / pw
+router.route("/:UserID&:UserPW").get((req, res) => {
+    Todo.findById({
+            UserID: req.params.UserID,
+            UserPW: req.params.UserPW
+        })
         .then((todo) => res.json(todo))
         .catch((err) => res.status(400).json("Error: " + err));
 });
 
 // Delete
-router.route("/:id").delete((req, res) => {
-    Todo.findByIdAndDelete(req.params.id)
+router.route("/:UserID").delete((req, res) => {
+    Todo.findOneAndDelete({ UserID: req.params.UserID })
         .then(() => res.json("Todo deleted."))
         .catch((err) => res.status(400).json("Error: " + err));
+
+    // Todo.findByIdAndDelete(req.params.id)
+    //     .then(() => res.json("Todo deleted."))
+    //     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 // Update
-router.route("/update/:id").post((req, res) => {
-    Todo.findById(req.params.id)
+router.route("/update/:UserID").post((req, res) => {
+    Todo.findOne({ UserID: req.params.UserID })
         .then((todo) => {
             todo.activity = req.body.activity;
 
