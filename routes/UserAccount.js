@@ -35,7 +35,7 @@ router.route("/:UserID").get((req, res) => {
 
 // Check id / pw
 router.route("/:UserID&:UserPW").get((req, res) => {
-    Todo.findById({
+    Todo.findOne({
             UserID: req.params.UserID,
             UserPW: req.params.UserPW
         })
