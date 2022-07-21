@@ -28,6 +28,13 @@ router.route("/add").post((req, res) => {
         .catch((err) => res.status(400).json("Error: " + err));
 });
 
+// Read by ItemOwner
+router.route("/UserItems/:OutfitOwnerID").get((req, res) => {
+    Todo.find({ OutfitOwnerID: req.params.OutfitOwnerID })
+        .then((todos) => res.json(todos))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
 // Read one
 router.route("/:id").get((req, res) => {
     Todo.findById(req.params.id)

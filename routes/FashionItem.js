@@ -42,9 +42,19 @@ router.route("/add").post((req, res) => {
         ItemWornCount,
     });
 
+    console.log(newTodo.ItemName);
+    console.log(newTodo.ItemOwner);
+
     newTodo
         .save()
         .then(() => res.json("Todo added!"))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// Read by ItemOwner
+router.route("/UserItems/:ItemOwner").get((req, res) => {
+    Todo.find({ ItemOwner: req.params.ItemOwner })
+        .then((todo) => res.json(todo))
         .catch((err) => res.status(400).json("Error: " + err));
 });
 
@@ -66,8 +76,22 @@ router.route("/:id").delete((req, res) => {
 router.route("/update/:id").post((req, res) => {
     Todo.findById(req.params.id)
         .then((todo) => {
-            todo.activity = req.body.activity;
+            todo.ItemName = req.body.ItemName;
+            todo.ItemOwner = req.body.ItemOwner;
+            todo.ItemCategory = req.body.ItemCategory;
+            todo.ItemDesc = req.body.ItemDesc;
+            todo.ItemColor = req.body.ItemColor;
+            todo.ItemFabric = req.body.ItemFabric;
+            todo.ItemPrice = req.body.ItemPrice;
+            todo.ItemSize = req.body.ItemSize;
+            todo.ItemSeason = req.body.ItemSeason;
+            todo.ItemBrand = req.body.ItemBrand;
+            todo.ItemImg = req.body.ItemImg;
+            todo.ItemLocation = req.body.ItemLocation;
+            todo.ItemBuyDate = req.body.ItemBuyDate;
+            todo.ItemWornCount = req.body.ItemWornCount;
 
+            console.log(todo.ItemImg);
             todo
                 .save()
                 .then(() => res.json("Todo updated!"))
