@@ -27,15 +27,23 @@ router.route("/add").post((req, res) => {
 });
 
 // Read one
-router.route("/:UserID").get((req, res) => {
+router.route("/:id").get((req, res) => {
     Todo.findById(req.params.id)
+        .then((todo) => res.json(todo))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
+// Read one by UserID
+router.route("/:UserID").get((req, res) => {
+    Todo.findOne({
+            UserID: req.params.UserID
+        })
         .then((todo) => res.json(todo))
         .catch((err) => res.status(400).json("Error: " + err));
 });
 
 // Check id / pw
 router.route("/:UserID/:UserPW").get((req, res) => {
-    console.log(req.params.UserID + "     " + req.params.UserPW);
     Todo.findOne({
             UserID: req.params.UserID,
             UserPW: req.params.UserPW,
