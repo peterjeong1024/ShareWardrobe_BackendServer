@@ -27,7 +27,7 @@ router.route("/add").post((req, res) => {
 });
 
 // Read one
-router.route("/:id").get((req, res) => {
+router.route("/:UserID").get((req, res) => {
     Todo.findById(req.params.id)
         .then((todo) => res.json(todo))
         .catch((err) => res.status(400).json("Error: " + err));
