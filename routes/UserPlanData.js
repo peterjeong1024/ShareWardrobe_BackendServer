@@ -44,7 +44,9 @@ router.route("/:id").delete((req, res) => {
 router.route("/update/:id").post((req, res) => {
     Todo.findById(req.params.id)
         .then((todo) => {
-            todo.activity = req.body.activity;
+            todo.UserID = req.body.UserID;
+            todo.WornDate = req.body.WornDate;
+            todo.OutFitsSerialize = req.body.OutFitsSerialize;
 
             todo
                 .save()

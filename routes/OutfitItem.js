@@ -53,7 +53,11 @@ router.route("/:id").delete((req, res) => {
 router.route("/update/:id").post((req, res) => {
     Todo.findById(req.params.id)
         .then((todo) => {
-            todo.activity = req.body.activity;
+            todo.OutfitImg = req.body.OutfitImg;
+            todo.OutfitCateName = req.body.OutfitCateName;
+            todo.OutfitOwnerID = req.body.OutfitOwnerID;
+            todo.FItemsSerialize = req.body.FItemsSerialize;
+
 
             todo
                 .save()
