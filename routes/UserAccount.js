@@ -13,11 +13,15 @@ router.route("/add").post((req, res) => {
     const UserID = req.body.UserID;
     const UserPW = req.body.UserPW;
     const UserName = req.body.UserName;
+    const UserEmail = req.body.UserEmail;
+    const IsGoogleAccount = req.body.IsGoogleAccount;
 
     const newTodo = new Todo({
         UserID,
         UserPW,
         UserName,
+        UserEmail,
+        IsGoogleAccount,
     });
 
     newTodo
@@ -34,7 +38,7 @@ router.route("/:id").get((req, res) => {
 });
 
 // Read one by UserID
-router.route("/:UserID").get((req, res) => {
+router.route("/checkID/:UserID").get((req, res) => {
     Todo.findOne({
             UserID: req.params.UserID
         })
@@ -70,6 +74,8 @@ router.route("/update/:UserID").post((req, res) => {
             todo.UserName = req.body.UserName;
             todo.UserID = req.body.UserID;
             todo.UserPW = req.body.UserPW;
+            todo.UserEmail = req.body.UserEmail;
+            todo.IsGoogleAccount = req.body.IsGoogleAccount;
 
             todo
                 .save()
