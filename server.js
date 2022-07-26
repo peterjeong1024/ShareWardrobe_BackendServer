@@ -45,6 +45,10 @@ app.use('/UserAccount', UserAccountRouter);
 const UserPlanDataRouter = require('./routes/UserPlanData');
 app.use('/UserPlanData', UserPlanDataRouter);
 
+const ConsultationsRouter = require('./routes/Consultations');
+app.use('/Consultations', ConsultationsRouter);
+
+
 
 // start server
 app.listen(port, () => {
