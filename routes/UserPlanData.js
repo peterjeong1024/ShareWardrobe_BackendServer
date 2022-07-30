@@ -13,11 +13,15 @@ router.route("/add").post((req, res) => {
     const UserID = req.body.UserID;
     const WornDate = req.body.WornDate;
     const OutFitsSerialize = req.body.OutFitsSerialize;
+    const FItemsSerialize = req.body.FItemsSerialize;
+    const ItemDescription = req.body.ItemDescription;
 
     const newTodo = new Todo({
         UserID,
         WornDate,
         OutFitsSerialize,
+        FItemsSerialize,
+        ItemDescription,
     });
 
     newTodo
@@ -47,6 +51,8 @@ router.route("/update/:id").post((req, res) => {
             todo.UserID = req.body.UserID;
             todo.WornDate = req.body.WornDate;
             todo.OutFitsSerialize = req.body.OutFitsSerialize;
+            todo.FItemsSerialize = req.body.FItemsSerialize;
+            todo.ItemDescription = req.body.ItemDescription;
 
             todo
                 .save()
