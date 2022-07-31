@@ -37,6 +37,13 @@ router.route("/:id").get((req, res) => {
         .catch((err) => res.status(400).json("Error: " + err));
 });
 
+// Read by UserID
+router.route("/UserItems/:UserID").get((req, res) => {
+    Todo.find({ UserID: req.params.UserID })
+        .then((todos) => res.json(todos))
+        .catch((err) => res.status(400).json("Error: " + err));
+});
+
 // Delete
 router.route("/:id").delete((req, res) => {
     Todo.findByIdAndDelete(req.params.id)
